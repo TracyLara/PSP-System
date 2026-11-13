@@ -128,8 +128,14 @@ router.get('/documents/:id/file', requireAuth, async (req, res) => {
     if (req.user.role !== 'admin' && rows[0].user_id !== req.user.id) {
       return res.status(403).json({ message: 'Not allowed' });
     }
-    res.sendFile(path.join(__dirname, '..', rows[0].file_path));
-  } catch (err) {
+    const filePath = path.join(__dirname, '..', rows[0].file_path);
+    if (!fs.existsSync(filePath)) {
+      return res.status(410).json({
+        message: 'This demo file is no longer available (the free server resets uploaded files).',
+      });
+    }
+    res.sendFile(filePath);
+    } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
   }

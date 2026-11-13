@@ -562,3 +562,15 @@ label.field input[type=date] { width: 100%; margin-top: 5px; }
   transform: rotate(-6deg) scale(1.06);
   filter: drop-shadow(0 0 8px var(--glow));
 }
+
+.demo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  font-size: 13px;
+  text-align: center;
+}
