@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '.env.cloud' });
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
